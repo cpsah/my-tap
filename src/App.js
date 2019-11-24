@@ -9,7 +9,13 @@ class App extends Component {
         { id: 1, value: "Button-1" },
         { id: 2, value: "Button-2" },
         { id: 3, value: "Button-3" },
-        { id: 4, value: "Button-4" }
+        { id: 4, value: "Button-4" },
+        { id: 5, value: "Button-5" },
+        { id: 6, value: "Button-6" },
+        { id: 7, value: "Button-7" },
+        { id: 8, value: "Button-8" },
+        { id: 9, value: "Button-9" },
+        { id: 10, value: "Button-10" }
       ],
       events: {
         onTap: this.handleEvent.bind(this, "tap"),
@@ -37,10 +43,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Tapables
-          tapButtons={this.state.tapButtons}
-          events={this.state.events}
-        />
+        <div className="chart-block">
+          <Tapables
+            tapButtons={this.state.tapButtons}
+            events={this.state.events}
+          />
+        </div>
 
         {this.renderTriggeredEvents()}
       </div>
@@ -48,12 +56,14 @@ class App extends Component {
   }
   renderTriggeredEvents() {
     return (
-      <div className="right">
-        <h3>Event log:</h3>
-        <div ref="eventLog" className="event-log">
-          {this.state.triggeredEvents.map((ev, i) => {
-            return <div key={"e" + i}>{ev}</div>;
-          })}
+      <div className="event-log-block">
+        <div className="event-log-block-content">
+          <h3>Event log:</h3>
+          <div ref="eventLog" className="event-log">
+            {this.state.triggeredEvents.map((ev, i) => {
+              return <div key={"e" + i}>{ev}</div>;
+            })}
+          </div>
         </div>
       </div>
     );
