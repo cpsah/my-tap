@@ -2,23 +2,16 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
 import Tapables from "./components/tapables";
-const apiURL = "http://localhost:3001/log-events";
+import tapButtons from "./data/tapButtons.json";
+import api from "./config/api.js";
+
+// TODO move to config
+const apiURL = `${api.url}/log-events`;
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      tapButtons: [
-        { id: 1, value: "Button-1" },
-        { id: 2, value: "Button-2" },
-        { id: 3, value: "Button-3" },
-        { id: 4, value: "Button-4" },
-        { id: 5, value: "Button-5" },
-        { id: 6, value: "Button-6" },
-        { id: 7, value: "Button-7" },
-        { id: 8, value: "Button-8" },
-        { id: 9, value: "Button-9" },
-        { id: 10, value: "Button-10" }
-      ],
+      tapButtons,
       events: {
         onTap: this.handleEvent.bind(this, "tap"),
         onPress: this.handleEvent.bind(this, "press"),
