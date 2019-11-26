@@ -43,14 +43,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="chart-block">
-          <Tapables
-            tapButtons={this.state.tapButtons}
-            events={this.state.events}
-          />
+        <div className="chart-section">
+          {this.renderChartBlock()}
+          {this.renderTriggeredEvents()}
         </div>
-
-        {this.renderTriggeredEvents()}
+      </div>
+    );
+  }
+  renderChartBlock() {
+    return (
+      <div className="chart-block">
+        <Tapables
+          tapButtons={this.state.tapButtons}
+          events={this.state.events}
+        />
       </div>
     );
   }

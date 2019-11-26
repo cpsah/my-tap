@@ -33,8 +33,10 @@
   overflow-y: auto;
   border: 1px solid gray;
 }
+.chart-section {
+  width: 80%;
+}
 .chart-block {
-  width: 75%;
   float: right;
 }
 .arcSlide {
