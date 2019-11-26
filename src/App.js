@@ -5,7 +5,6 @@ import Tapables from "./components/tapables";
 import tapButtons from "./data/tapButtons.json";
 import api from "./config/api.js";
 
-// TODO move to config
 const apiURL = `${api.url}/log-events`;
 class App extends Component {
   constructor() {
@@ -77,7 +76,7 @@ class App extends Component {
         <div className="event-log-block-content">
           <h3>Event log:</h3>
           <div ref="eventLog" className="event-log">
-            <div>{this.state.triggeredEvents}</div>;
+            <div>{this.state.triggeredEvents}</div>
           </div>
         </div>
       </div>
