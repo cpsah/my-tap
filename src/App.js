@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./App.css";
 import Tapables from "./components/tapables";
+const apiURL = "http://localhost:3001/log-events";
 class App extends Component {
   constructor() {
     super();
@@ -33,12 +35,28 @@ class App extends Component {
   }
 
   handleEvent = (name, event) => {
-    let eventsList = this.state.triggeredEvents;
+    let eventsList = [];
     eventsList.push(`${name} - ${event.target.innerHTML}`);
     this.setState({
-      triggeredEvents: eventsList
+      triggeredEvents: event.target.innerHTML
     });
+
+    this.callAPI(eventsList);
   };
+
+  callAPI(actionData) {
+    axios
+      .post(apiURL, {
+        data: actionData
+      })
+      .then(res => {
+        const response = res.data ? res.data : "No Data Found";
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   render() {
     return (
@@ -66,9 +84,7 @@ class App extends Component {
         <div className="event-log-block-content">
           <h3>Event log:</h3>
           <div ref="eventLog" className="event-log">
-            {this.state.triggeredEvents.map((ev, i) => {
-              return <div key={"e" + i}>{ev}</div>;
-            })}
+            <div>{this.state.triggeredEvents}</div>;
           </div>
         </div>
       </div>
