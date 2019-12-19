@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import * as d3 from "d3";
 
 class Path extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.state = {
@@ -33,8 +34,8 @@ class Path extends Component {
     };
   };
 
-  render() {
-    let { radius, slice, sliceColor, tapButton } = this.props;
+  render () {
+    const { radius, slice, sliceColor, tapButton } = this.props;
 
     const outerRadius = this.state.isHovered ? radius * 1.1 : radius;
     const innerRadius = radius * 0.6;
@@ -43,7 +44,7 @@ class Path extends Component {
       .arc()
       .innerRadius(innerRadius)
       .outerRadius(outerRadius)
-      .padAngle(0.03)
+      .padAngle(0.02)
       .cornerRadius(2);
 
     const { dx, dy } = this.getAxis(arc(slice));
@@ -56,6 +57,8 @@ class Path extends Component {
           fill={sliceColor}
           onMouseOver={this.onMouseOver}
           onMouseOut={this.onMouseOut}
+          onTouchStart={this.onMouseOver}
+          onTouchMove={this.onMouseOver}
         >
           {tapButton.value}
         </path>
@@ -71,5 +74,12 @@ class Path extends Component {
     );
   }
 }
+
+Path.propTypes = {
+  tapButton: PropTypes.object,
+  radius: PropTypes.number,
+  slice: PropTypes.number,
+  sliceColor: PropTypes.string
+};
 
 export default Path;
