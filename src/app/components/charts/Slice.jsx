@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import * as d3 from "d3";
+import {interpolateRgb} from "d3-interpolate";
 import Path from "./Path";
 
 export const Slice = props => {
   const { pie, tapButtons } = props;
 
-  const interpolateInner = d3.interpolateRgb("#eaaf79", "#bc3358", "#abc123");
+  const interpolateInner = interpolateRgb("#eaaf79", "#bc3358");
 
   return pie.map((slice, index) => {
     const sliceColor = interpolateInner(index / (pie.length - 1));

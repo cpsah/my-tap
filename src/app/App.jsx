@@ -13,7 +13,7 @@ class App extends Component {
       tapButtons,
       events: {
         onTap: this.handleEvent.bind(this, "tap"),
-        onPress: this.handleEvent.bind(this, "press"),
+        //onPress: this.handleEvent.bind(this, "press"),
         onTouchStart: this.handleEvent.bind(this, "touchStart"),
         onTouchMove: this.handleEvent.bind(this, "touchMove"),
         onTouchEnd: this.handleEvent.bind(this, "touchEnd"),

@@ -23,37 +23,24 @@ class Path extends Component {
     });
   };
 
-  // TODO Handle through arc pi d
-  getAxis = d => {
-    let dArr = d.substring(1);
-    dArr = dArr.split("A");
-    const dxy = dArr[0].split(",");
-    return {
-      dx: dxy[0],
-      dy: dxy[1]
-    };
-  };
-
   render () {
     const { radius, slice, sliceColor, tapButton } = this.props;
 
     const outerRadius = this.state.isHovered ? radius * 1.1 : radius;
     const innerRadius = radius * 0.6;
 
-    const arc = d3
-      .arc()
+    const cArc = d3.arc()
       .innerRadius(innerRadius)
       .outerRadius(outerRadius)
       .padAngle(0.02)
       .cornerRadius(2);
 
-    const { dx, dy } = this.getAxis(arc(slice));
-    const transform = `translate(${dx},${dy})`;
+    const cxy = cArc.centroid(slice);
 
     return (
       <g>
         <path
-          d={arc(slice)}
+          d={cArc(slice)}
           fill={sliceColor}
           onMouseOver={this.onMouseOver}
           onMouseOut={this.onMouseOut}
@@ -63,9 +50,9 @@ class Path extends Component {
           {tapButton.value}
         </path>
         <text
-          transform={transform}
           className="arcSlide"
-          dy=".35em"
+          x={cxy[0]}
+          y={cxy[1]}
           textAnchor="middle"
         >
           {tapButton.id}
