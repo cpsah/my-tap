@@ -12,11 +12,9 @@ class Tapables extends Component {
     return (
       <div>
         <svg height={height} width={width}>
-          <g transform={`translate(${width / 2},${height / 2})`}>
-            <Tappable component="g" stopPropagation {...events}>
+            <Tappable component="g" preventDefault {...events} transform={`translate(${width / 2},${height / 2})`}>
               <DoNutChart key={Math.random()} tapButtons={tapButtons} />
             </Tappable>
-          </g>
         </svg>
       </div>
     );

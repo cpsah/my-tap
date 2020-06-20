@@ -22,6 +22,13 @@ class Path extends Component {
       isHovered: false
     });
   };
+  onMouseMove= () => {
+    this.setState({
+      isHovered: true
+    });
+  };
+
+
 
   render () {
     const { radius, slice, sliceColor, tapButton } = this.props;
@@ -44,8 +51,7 @@ class Path extends Component {
           fill={sliceColor}
           onMouseOver={this.onMouseOver}
           onMouseOut={this.onMouseOut}
-          onTouchStart={this.onMouseOver}
-          onTouchMove={this.onMouseOver}
+          onMouseMove={this.onMouseMove}
         >
           {tapButton.value}
         </path>

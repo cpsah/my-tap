@@ -8,5 +8,10 @@ export const tapButtons = [
   { id: 7, value: "Button-7" },
   { id: 8, value: "Button-8" },
   { id: 9, value: "Button-9" },
-  { id: 10, value: "Button-10" }
+  { id: 10, value: "Button-10" },
+  { id: 11, value: "Button-11" },
+  { id: 12, value: "Button-12" },
+  { id: 13, value: "Button-13" },
+  { id: 14, value: "Button-14" },
+  { id: 15, value: "Button-15" },
 ];
