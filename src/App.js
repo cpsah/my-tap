@@ -3,11 +3,12 @@ import axios from "axios";
 import "./App.css";
 import Tapables from "./components/tapables";
 import tapButtons from "./data/tapButtons.json";
-import api from "./config/api.js";
+import config from "./config/api.js";
 
-const apiURL = `${api.url}/log-events`;
+console.log(config);
+const apiURL = `${config.url}/log-events`;
 class App extends Component {
-  constructor() {
+  constructor () {
     super();
     this.state = {
       tapButtons,
@@ -54,8 +55,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="chart-section">
-          {this.renderChartBlock()}
-          {this.renderTriggeredEvents()}
+          { this.renderChartBlock() }
+          { this.renderTriggeredEvents() }
         </div>
       </div>
     );
@@ -64,8 +65,8 @@ class App extends Component {
     return (
       <div className="chart-block">
         <Tapables
-          tapButtons={this.state.tapButtons}
-          events={this.state.events}
+          tapButtons={ this.state.tapButtons }
+          events={ this.state.events }
         />
       </div>
     );
@@ -76,7 +77,7 @@ class App extends Component {
         <div className="event-log-block-content">
           <h3>Event log:</h3>
           <div ref="eventLog" className="event-log">
-            <div>{this.state.triggeredEvents}</div>
+            <div>{ this.state.triggeredEvents }</div>
           </div>
         </div>
       </div>
