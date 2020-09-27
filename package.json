@@ -9,6 +9,7 @@
     "app": "webpack-dev-server --open",
     "server": "babel-node src/server/server",
     "dev": "npm-run-all --parallel server app",
+    "build": "npm-run-all --parallel server app",
     "lint": "eslint **/*.js **/*.jsx",
     "lint:fix": "yarn lint -- --fix"
   },
